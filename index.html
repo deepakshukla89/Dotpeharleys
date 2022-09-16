@@ -4,50 +4,79 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="stylesheet" href="style.css" />
     <style>
+      * {
+        padding: 0;
+        margin: 0px;
+      }
       body {
         background-color: #b9d9eb;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
           sans-serif;
+        padding: 0;
+        margin-inline: 0px;
       }
 
-      .display_flex_row {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
+      .display_flex_coloum {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+      .container_cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-left: 6vw;
+        margin-right: 6vw;
+        justify-items: center;
+        gap: 3vw;
       }
       .card {
-        width: 19vw;
-        padding: 10px;
-        margin: 10px;
+        width: 100%;
         min-width: 100px;
+        margin: 10px;
+      }
+      .card a {
+        text-decoration: none;
       }
       .card img {
-        width: 80%;
-        border-radius: 15px;
+        width: 70%;
+        border-radius: 50%;
+        z-index: 1;
 
         /* border: 5px solid white; */
       }
       .heading_btn {
+        padding: 20px;
         background: rgb(255, 255, 255);
         padding-top: 50px;
         padding-bottom: 20px;
-        padding-left: 10px;
-        padding-right: 10px;
+        width: 80%;
         margin-top: -70px;
         border-radius: 10px;
       }
       .heading_btn h3 {
-        font-size: 25px;
+        font-size: 22px;
         font-weight: 400;
         color: #404040;
         margin-top: 30px;
-        margin-bottom: 15px;
+        margin-bottom: 0px;
       }
+      .line_heading_desc {
+        height: 1px;
+        width: 50%;
+        background: #4f88a9;
+        margin: 5px 1px;
+      }
+      .heading_btn p {
+        font-size: 13px;
+        color: #4f88a9;
+        opacity: 0.7;
+        margin-bottom: 18px;
+      }
+
       .button {
         border-radius: 4px;
         background-color: #3889b8;
@@ -56,7 +85,7 @@
         text-align: center;
         font-size: 15px;
         padding: 7px;
-        width: 90%;
+        width: 70%;
         transition: all 0.5s;
         cursor: pointer;
         /* margin: 5px; */
@@ -81,137 +110,304 @@
         transition: 0.5s;
       }
 
-      .button:hover span {
+      .heading_btn:hover span {
         padding-right: 25px;
       }
 
-      .button:hover span:after {
+      .heading_btn:hover span:after {
         opacity: 1;
         right: 0;
       }
       @media screen and (max-width: 800px) {
-        .heading_btn {
-          margin-top: -70px;
+        .container_cards {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          margin-left: 6vw;
+          margin-right: 6vw;
+          justify-items: center;
+          gap: 1vw;
         }
-        .display_flex_column {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-        .card {
-          width: 40vw;
-          padding: 10px;
-          margin: 10px;
-          min-width: 150px;
-        }
-        .heading_btn h3 {
-          font-size: 20px;
-        }
-        .button {
-          border-radius: 4px;
-          font-size: 15px;
-          padding: 5px;
-          width: 90%;
+        @media screen and (max-width: 510px) {
+          .container_cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-left: 4vw;
+            margin-right: 4vw;
+            justify-items: center;
+            gap: 5vw;
+          }
+          .button {
+            font-size: 10px;
+            padding: 7px;
+            width: 90%;
+          }
+          .heading_btn {
+            margin-top: -30%;
+            padding-top: 18%;
+          }
+          .heading_btn h3 {
+            font-size: 15px;
+            font-weight: 400;
+            color: #404040;
+            margin-top: 30px;
+            margin-bottom: 0px;
+          }
+          .line_heading_desc {
+            height: 1px;
+            width: 50%;
+            background: #4f88a9;
+            margin: 5px 1px;
+          }
+          .heading_btn p {
+            font-size: 10px;
+            color: #4f88a9;
+            opacity: 0.7;
+            margin-bottom: 18px;
+          }
         }
       }
     </style>
-
     <title>Document</title>
   </head>
   <body>
-    <div class="food_card_all display_flex_row display_flex_column">
-      <div class="four_card_line display_flex_row">
-        <div class="two_card_inline">
-          <div class="card">
-            <img
-              src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
-              alt="Celebratio Cakes"
-            />
-            <div class="heading_btn">
-              <h3>Celebration Cakes</h3>
-              <button class="button"><span>Order Now </span></button>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              src="https://cdn.dotpe.in/kiranaStatic/custom_website/Cheese+Cake.png"
-              alt="Celebratio Cakes"
-            />
-            <div class="heading_btn">
-              <h3>Cheese cake</h3>
-              <button class="button"><span>Order Now </span></button>
-            </div>
-          </div>
-        </div>
+    <div class="container_cards">
+      <div class="card">
+        <div class="display_flex_coloum">
+          <img
+            src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
+            alt="Celebratio Cakes"
+          />
 
-        <div class="two_card_inline">
-          <div class="card">
-            <img
-              src="https://cdn.dotpe.in/kiranaStatic/custom_website/Continental.png"
-              alt="Celebratio Cakes"
-            />
-            <div class="heading_btn">
-              <h3>Continental</h3>
-              <button class="button"><span>Order Now </span></button>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              src="https://cdn.dotpe.in/kiranaStatic/custom_website/Cup+Cakes+and+Desserts.png"
-              alt="Celebratio Cakes"
-            />
-            <div class="heading_btn">
-              <h3>Cupcakes & Desserts</h3>
-              <button class="button"><span>Order Now </span></button>
-            </div>
+          <div class="heading_btn">
+            <a class="display_flex_coloum" href="#">
+              <div class="card_txt display_flex_coloum">
+                <h3>Celebration Cakes</h3>
+                <div class="line_heading_desc"></div>
+                <p>Cake and Celebration</p>
+              </div>
+
+              <button class="button"><span>Order Now </span></button></a
+            >
           </div>
         </div>
       </div>
-      <div class="four_card_line display_flex_row">
-        <div class="two_card_inline">
-          <div class="card">
-            <img
-              src="https://cdn.dotpe.in/kiranaStatic/custom_website/Harleys+Bar+Cakes+and+Breads.png"
-              alt="Celebratio Cakes"
-            />
-            <div class="heading_btn">
-              <h3>Bar cakes & Breads </h3>
-              <button class="button"><span>Order Now </span></button>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              src="https://cdn.dotpe.in/kiranaStatic/custom_website/Harleys+Macrons.png"
-              alt="Celebratio Cakes"
-            />
-            <div class="heading_btn">
-              <h3>Macarons</h3>
-              <button class="button"><span>Order Now </span></button>
-            </div>
+      <div class="card">
+        <div class="display_flex_coloum">
+          <img
+            src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
+            alt="Celebratio Cakes"
+          />
+
+          <div class="heading_btn">
+            <a class="display_flex_coloum" href="#">
+              <div class="card_txt display_flex_coloum">
+                <h3>Celebration Cakes</h3>
+                <div class="line_heading_desc"></div>
+                <p>Cake and Celebration</p>
+              </div>
+
+              <button class="button"><span>Order Now </span></button></a
+            >
           </div>
         </div>
+      </div>
+      <div class="card">
+        <div class="display_flex_coloum">
+          <img
+            src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
+            alt="Celebratio Cakes"
+          />
 
-        <div class="two_card_inline">
-          <div class="card">
-            <img
-              src="https://cdn.dotpe.in/kiranaStatic/custom_website/Harleys+Medovic.png"
-              alt="Celebratio Cakes"
-            />
-            <div class="heading_btn">
-              <h3>Medovik</h3>
-              <button class="button"><span>Order Now </span></button>
-            </div>
+          <div class="heading_btn">
+            <a class="display_flex_coloum" href="#">
+              <div class="card_txt display_flex_coloum">
+                <h3>Celebration Cakes</h3>
+                <div class="line_heading_desc"></div>
+                <p>Cake and Celebration</p>
+              </div>
+
+              <button class="button"><span>Order Now </span></button></a
+            >
           </div>
-          <div class="card">
-            <img
-              src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
-              alt="Celebratio Cakes"
-            />
-            <div class="heading_btn">
-              <h3>Deepak Shukla</h3>
-              <button class="button"><span>Order Now </span></button>
-            </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="display_flex_coloum">
+          <img
+            src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
+            alt="Celebratio Cakes"
+          />
+
+          <div class="heading_btn">
+            <a class="display_flex_coloum" href="#">
+              <div class="card_txt display_flex_coloum">
+                <h3>Celebration Cakes</h3>
+                <div class="line_heading_desc"></div>
+                <p>Cake and Celebration</p>
+              </div>
+
+              <button class="button"><span>Order Now </span></button></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="display_flex_coloum">
+          <img
+            src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
+            alt="Celebratio Cakes"
+          />
+
+          <div class="heading_btn">
+            <a class="display_flex_coloum" href="#">
+              <div class="card_txt display_flex_coloum">
+                <h3>Celebration Cakes</h3>
+                <div class="line_heading_desc"></div>
+                <p>Cake and Celebration</p>
+              </div>
+
+              <button class="button"><span>Order Now </span></button></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="display_flex_coloum">
+          <img
+            src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
+            alt="Celebratio Cakes"
+          />
+
+          <div class="heading_btn">
+            <a class="display_flex_coloum" href="#">
+              <div class="card_txt display_flex_coloum">
+                <h3>Celebration Cakes</h3>
+                <div class="line_heading_desc"></div>
+                <p>Cake and Celebration</p>
+              </div>
+
+              <button class="button"><span>Order Now </span></button></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="display_flex_coloum">
+          <img
+            src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
+            alt="Celebratio Cakes"
+          />
+
+          <div class="heading_btn">
+            <a class="display_flex_coloum" href="#">
+              <div class="card_txt display_flex_coloum">
+                <h3>Celebration Cakes</h3>
+                <div class="line_heading_desc"></div>
+                <p>Cake and Celebration</p>
+              </div>
+
+              <button class="button"><span>Order Now </span></button></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="display_flex_coloum">
+          <img
+            src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
+            alt="Celebratio Cakes"
+          />
+
+          <div class="heading_btn">
+            <a class="display_flex_coloum" href="#">
+              <div class="card_txt display_flex_coloum">
+                <h3>Celebration Cakes</h3>
+                <div class="line_heading_desc"></div>
+                <p>Cake and Celebration</p>
+              </div>
+
+              <button class="button"><span>Order Now </span></button></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="display_flex_coloum">
+          <img
+            src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
+            alt="Celebratio Cakes"
+          />
+
+          <div class="heading_btn">
+            <a class="display_flex_coloum" href="#">
+              <div class="card_txt display_flex_coloum">
+                <h3>Celebration Cakes</h3>
+                <div class="line_heading_desc"></div>
+                <p>Cake and Celebration</p>
+              </div>
+
+              <button class="button"><span>Order Now </span></button></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="display_flex_coloum">
+          <img
+            src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
+            alt="Celebratio Cakes"
+          />
+
+          <div class="heading_btn">
+            <a class="display_flex_coloum" href="#">
+              <div class="card_txt display_flex_coloum">
+                <h3>Celebration Cakes</h3>
+                <div class="line_heading_desc"></div>
+                <p>Cake and Celebration</p>
+              </div>
+
+              <button class="button"><span>Order Now </span></button></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="display_flex_coloum">
+          <img
+            src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
+            alt="Celebratio Cakes"
+          />
+
+          <div class="heading_btn">
+            <a class="display_flex_coloum" href="#">
+              <div class="card_txt display_flex_coloum">
+                <h3>Celebration Cakes</h3>
+                <div class="line_heading_desc"></div>
+                <p>Cake and Celebration</p>
+              </div>
+
+              <button class="button"><span>Order Now </span></button></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="display_flex_coloum">
+          <img
+            src="https://cdn.dotpe.in/kiranaStatic/custom_website/Celebration+Cakes.png"
+            alt="Celebratio Cakes"
+          />
+
+          <div class="heading_btn">
+            <a class="display_flex_coloum" href="#">
+              <div class="card_txt display_flex_coloum">
+                <h3>Celebration Cakes</h3>
+                <div class="line_heading_desc"></div>
+                <p>Cake and Celebration</p>
+              </div>
+
+              <button class="button"><span>Order Now </span></button></a
+            >
           </div>
         </div>
       </div>
